@@ -37,7 +37,8 @@ jobs:
         id: changes
         shell: pwsh
         run: |
-          if (git diff --quiet -- bucket/rustysound.json) {
+          $changed = git status --porcelain -- bucket/rustysound.json
+          if ([string]::IsNullOrWhiteSpace($changed)) {
             "updated=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
           } else {
             $version = (Get-Content bucket/rustysound.json -Raw | ConvertFrom-Json).version
