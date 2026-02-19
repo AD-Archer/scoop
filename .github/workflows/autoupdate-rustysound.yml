@@ -2,11 +2,9 @@ name: Auto-update rustysound manifest
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "23 * * * *"
   repository_dispatch:
     types:
-      - rustysound_release
+      - rustysound-release
 
 permissions:
   contents: write

@@ -37,9 +37,9 @@ The repository name can be anything (`bucket`, `scoop-bucket`, etc.). The import
 
 This repo includes `.github/workflows/autoupdate-rustysound.yml`, which:
 
-- runs hourly
+- no cron schedule (dispatch/manual only)
 - supports manual runs (`workflow_dispatch`)
-- supports external trigger via `repository_dispatch` (`rustysound_release`)
+- supports external trigger via `repository_dispatch` (`rustysound-release`)
 - updates `bucket/rustysound.json` using Scoop `checkver`
 - smoke-tests install/uninstall
 - commits and pushes if the manifest changed
