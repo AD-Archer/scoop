@@ -2,6 +2,11 @@ name: Auto-update rustysound manifest
 
 on:
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "RustySound release tag (e.g. v0.1.67)"
+        required: false
+        type: string
   repository_dispatch:
     types:
       - rustysound-release
@@ -33,13 +38,18 @@ jobs:
         run: |
           scoop --version
 
-      - name: Resolve target release from dispatch
+      - name: Resolve target release from dispatch/manual input
         id: target
         shell: pwsh
         run: |
-          $eventName = '${{ github.event_name }}'
-          $raw = '${{ github.event.client_payload.version }}'
-          if ($eventName -eq 'repository_dispatch' -and -not [string]::IsNullOrWhiteSpace($raw)) {
+          $raw = ''
+          if ('${{ github.event_name }}' -eq 'repository_dispatch') {
+            $raw = '${{ github.event.client_payload.version }}'
+          } elseif (-not [string]::IsNullOrWhiteSpace('${{ inputs.release_tag }}')) {
+            $raw = '${{ inputs.release_tag }}'
+          }
+
+          if (-not [string]::IsNullOrWhiteSpace($raw)) {
             if ($raw.StartsWith('v')) {
               $tag = $raw
               $version = $raw.Substring(1)
