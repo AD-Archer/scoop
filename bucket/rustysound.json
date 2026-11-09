@@ -1,12 +1,12 @@
 {
-  "version": "3.1.100",
+  "version": "3.1.101",
   "description": "A cross-platform music streaming client for Navidrome/Subsonic servers.",
   "homepage": "https://github.com/AD-Archer/RustySound",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/AD-Archer/RustySound/releases/download/v3.1.100/Rustysound_3.1.100_x64-setup.exe#/dl.7z",
-      "hash": "34ae5b3665e1d1f9c8a48df1a7ec30c005ca4d69ab99fdfcdff1170434e43780"
+      "url": "https://github.com/AD-Archer/RustySound/releases/download/v3.1.101/Rustysound_3.1.101_x64-setup.exe#/dl.7z",
+      "hash": "1bf29b270baf733d9b028a91db445e31c521158276b7ac36c17eb01b66355d72"
     }
   },
   "post_install": [
